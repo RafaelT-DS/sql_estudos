@@ -1,0 +1,38 @@
+Curso de SQL Completo - Aplicado ao Mercado de Trabalho
+
+- Banco de dados relacional é um banco de dados em que as tabelas se relacionam por meio de uma chave.
+- Chave primária - primary key - pk (é o que identifica um elemento da tabela).
+- Chave estrangeira - foreign key - fk (coluna onde os dados vêm de uma tabela externa; não precisa ser única na tabela; é usada para relacionar diferentes tabelas)
+- CRTL + ENTER = Executar a linha selecionada.
+- Boa prática = colocar as palavras do banco de dados em letra maiúscula. Ex: SELECT * FROM livros.
+- LIMIT = limita a quantidade de dados retornados na consulta
+*********************************************************************************************************************************************************************************
+SELECT nome, edicao FROM livros;
+SELECT nome, sobrenome, cpf FROM pessoas;
+SELECT nome, edicao, 10 FROM livros; -- Consultando as colunas nome e edição da tabela livros e acrescentando uma coluna com nome e todos os campos dela como 10.  
+SELECT nome, sobrenome, 10, "Trabalho" from PESSOAS;
+
+*****DISTINCT*****
+
+SELECT DISTINCT preco FROM carros; -- Não irá trazer preços repetidos no resultado, por causa do DISCTINT.
+SELECT DISTINCT edicao, nome FROM livros; -- Não irá trazer somente quando a linha inteira for igual, se houver a mesma edição duas vezes mas com nomes diferetens, elas irão aparecer.
+SELECT DISTINCT nome, sobrenome FROM pessoas;
+
+*****LIMIT*****	
+
+SELECT * FROM livros LIMIT 4; -- Irá trazer somente as 4 primeiras linhas da tabela	
+SELECT nome, sobrenome FROM pessoas LIMIT 10;
+
+*****ORDER BY*****
+
+SELECT nome FROM pessoas ORDER BY nome DESC; -- irá trazer todos os nomes da tabela pessoas ordernando pelo nome e por ordem alfabética descrescente
+SELECT nome, sobrenome FROM pessoas ORDER BY 1 DESC; -- o 1 antes do DESC, refere-se a primeira coluna do select, então dá no mesmo colocar 1 ou nome.
+SELECT nome, sobrenome, cpf FROM pessoas ORDER BY 1, 3 DESC;
+
+*****WHERE*****
+
+SELECT nome, edicao FROM livros WHERE edicao = 1; -- Só irá aparecer as edições que forem 1.
+SELECT nome, sobrenome FROM pessoas WHERE nome = "Miguel";
+SELECT * FROM livros WHERE round (preco, 2) = 40.34; -- é necessário usar o round (preco -> essa é a tabela que quero arredondar, 2 -> quantidade de casas decimais
+-- que eu quero. 
+SELECT * FROM livros WHERE date_format(dt_expedicao, '%Y') > 2011; -- depois do where estou dizendo que quero que o campo dt_expedicao seja formatado para trazer somente o ano, e o '%Y' faz isso.

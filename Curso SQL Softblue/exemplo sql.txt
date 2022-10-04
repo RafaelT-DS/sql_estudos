@@ -1,0 +1,10 @@
+select a.produto,
+a.nome,
+d.codbarra
+
+From CAD0030 a
+left join CAD0049 d on
+a.codigo = d.codproduto
+
+where a.produto is not null
+and d.codproduto is not null
